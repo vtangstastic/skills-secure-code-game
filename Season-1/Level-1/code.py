@@ -13,8 +13,8 @@ Follow the instructions below to get started:
 
 from collections import namedtuple
 
-Order = namedtuple('Order', 'id, items')
-Item = namedtuple('Item', 'type, description, amount, quantity')
+Order = namedtuple('Order', 'id', 'items')
+Item = namedtuple('Item', 'type', 'description', 'amount', 'quantity')
 
 def validorder(order: Order):
     net = 0
@@ -25,7 +25,7 @@ def validorder(order: Order):
         elif item.type == 'product':
             net -= item.amount * item.quantity
         else:
-            return "Invalid item type: %s" % item.type
+            return "Invalid item type: %s", item.type
 
     if net != 0:
         return "Order ID: %s - Payment imbalance: $%0.2f" % (order.id, net)
